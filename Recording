@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消費大獎賞2025個人記錄</title>
+    <style>
+        :root {
+            --primary-color: #28a745;
+            --secondary-color: #dc3545;
+            --border-radius: 5px;
+            --padding: 10px;
+            --shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: var(--padding);
+        }
+        .container {
+            max-width: 100%;
+            width: 100%;
+            background: white;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+        .time-info {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        #recordForm {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--padding);
+            margin-bottom: 15px;
+        }
+        #recordForm > div {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            align-items: center;
+        }
+        #recordForm label {
+            font-weight: bold;
+            font-size: 0.9rem;
+            min-width: 40px;
+        }
+        #recordForm select,
+        #recordForm input[type="checkbox"] {
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: var(--border-radius);
+            box-sizing: border-box;
+            font-size: 0.9rem;
+        }
+        tbody td:nth-child(3),
+        tbody td:nth-child(4),
+        tbody td:nth-child(5) {
+            cursor: pointer;
+        }
+        tbody td.strikethrough {
+            text-decoration: line-through;
+            color: #888;
+        }
+        #recordForm select {
+            flex-grow: 1;
+        }
+        #recordForm button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: var(--padding);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        #recordForm button:hover {
+            background-color: #1e7e34;
+        }
+        .filters {
+            display: flex;
+            flex-direction: row;
+            gap: var(--padding);
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        .filters > div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 5px;
+        }
+        .filters label {
+            font-weight: bold;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        .filters select,
+        .filters button {
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: var(--border-radius);
+            box-sizing: border-box;
+            font-size: 0.9rem;
+        }
+        .filters button {
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .filters button:hover {
+            background-color: #1e7e34;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 15px;
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 400px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: center;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 50px;
+        }
+        th:nth-child(1), td:nth-child(1) {
+            max-width: 30px;
+        }
+        th:nth-child(2), td:nth-child(2) {
+            max-width: 60px;
+        }
+        th:nth-child(3), td:nth-child(3),
+        th:nth-child(4), td:nth-child(4),
+        th:nth-child(5), td:nth-child(5) {
+            max-width: 40px;
+        }
+        th:nth-child(6), td:nth-child(6) {
+            max-width: 60px;
+        }
+        th:nth-child(7), td:nth-child(7) {
+            max-width: 40px;
+        }
+        th:nth-child(8), td:nth-child(8) {
+            max-width: 50px;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tbody tr.used {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .export-button {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: var(--padding);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        .export-button:hover {
+            background-color: #c82333;
+        }
+        .import-button {
+            background-color: #007bff;
+            color: white;
+            padding: var(--padding);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        .import-button:hover {
+            background-color: #0069d9;
+        }
+        .draw-row {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            align-items: center;
+        }
+        .draw-row label {
+            font-weight: bold;
+            font-size: 0.9rem;
+            min-width: 30px;
+        }
+        .draw-row select {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+        }
+        .summary-info {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .footer-note {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            border: 1px solid #eee;
+        }
+        .footer-note p {
+            margin: 0;
+        }
+        .privacy-notice {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: var(--border-radius);
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            font-size: 0.9rem;
+        }
+        .privacy-notice label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        /* Settings Button */
+        .settings-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #6c757d;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+        .settings-button:hover {
+            background-color: #5a6268;
+        }
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .modal-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .platform-checkboxes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .platform-checkboxes label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        @media (max-width: 480px) {
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .filters > div {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            th, td {
+                font-size: 0.7rem;
+                padding: 3px;
+            }
+            .draw-row {
+                flex-wrap: wrap;
+            }
+            .platform-checkboxes {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>消費大獎賞2025個人記錄</h2>
+        <div class="time-info" id="timeInfo"></div>
+
+        <form id="recordForm">
+            <div>
+                <label for="platform">平台:</label>
+                <select id="platform" required>
+                    <option value="">請選擇</option>
+                    <option value="Alipay">Alipay支付寶</option>
+                    <option value="BOC">BOC中銀</option>
+                    <option value="GFB">GFB廣發</option>
+                    <option value="ICBC">ICBC工銀</option>
+                    <option value="Luso">Luso國際</option>
+                    <option value="MPay">MPay</option>
+                    <option value="TFB">TFB大豐</option>
+                    <option value="UePay">UePay極易付</option>
+                </select>
+            </div>
+            <div>
+                <label for="giveUp">
+                    <input type="checkbox" id="giveUp"> 冇抽
+                </label>
+            </div>
+            <div class="draw-row">
+                <label>券:</label>
+                <select id="draw1" class="draw-select">
+                    <option value="-">-</option>
+                    <option>10</option>
+                    <option>20</option>
+                    <option>50</option>
+                    <option>100</option>
+                    <option>200</option>
+                </select>
+                <select id="draw2" class="draw-select">
+                    <option value="-">-</option>
+                    <option>10</option>
+                    <option>20</option>
+                    <option>50</option>
+                    <option>100</option>
+                    <option>200</option>
+                </select>
+                <select id="draw3" class="draw-select">
+                    <option value="-">-</option>
+                    <option>10</option>
+                    <option>20</option>
+                    <option>50</option>
+                    <option>100</option>
+                    <option>200</option>
+                </select>
+            </div>
+            <button type="button" onclick="addRecord()">提交</button>
+        </form>
+
+        <div class="filters">
+            <div>
+                <label for="filterWeek">周數:</label>
+                <select id="filterWeek">
+                    <option value="">全部</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div>
+                <label for="filterPlatform">平台:</label>
+                <select id="filterPlatform">
+                    <option value="">全部</option>
+                    <option>Alipay</option>
+                    <option>BOC</option>
+                    <option>GFB</option>
+                    <option>ICBC</option>
+                    <option>Luso</option>
+                    <option>MPay</option>
+                    <option>TFB</option>
+                    <option>UePay</option>
+                </select>
+            </div>
+            <button onclick="filterRecords()">篩選</button>
+        </div>
+
+        <div class="summary-info" id="weeklySummary">
+            本周消費券：MOP 0<br>需消費：MOP 0
+        </div>
+
+        <div class="table-container">
+            <table id="recordsTable">
+                <thead>
+                    <tr>
+                        <th>周數</th>
+                        <th>平台</th>
+                        <th>券1</th>
+                        <th>券2</th>
+                        <th>券3</th>
+                        <th>消費</th>
+                        <th>已使用</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <button class="export-button" onclick="exportCSV()">匯出 CSV</button>
+        <button class="import-button" onclick="document.getElementById('fileInput').click()">匯入 CSV</button>
+        <input type="file" id="fileInput" accept=".csv" style="display: none;" onchange="importCSV(event)">
+        
+        <div class="footer-note">
+            <p>注意：所有資料以匿名方式儲存在Firebase數據庫中，用戶使用同一設備及瀏覽器可同步相關記錄。<br>本網頁與活動官方無關，僅為個人開發使用，網頁提供者對內容的提供、儲存或滅失不負任何責任。</p>
+        </div>
+        
+        <div class="privacy-notice">
+            <h4>隱私聲明</h4>
+            <p>我們使用匿名帳號保存您的數據，不會收集個人識別信息</p>
+            <label>
+                <input type="checkbox" id="analyticsOptOut">
+                不參與使用數據分析
+            </label>
+        </div>
+    </div>
+
+    <!-- Settings Button -->
+    <div class="settings-button" onclick="openSettings()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">設置</div>
+                <button class="close-modal" onclick="closeSettings()">&times;</button>
+            </div>
+            <div class="platform-settings">
+                <h4>平台顯示設置</h4>
+                <p>選擇要隱藏的平台（將不會出現在選擇列表中）</p>
+                <div class="platform-checkboxes">
+                    <label><input type="checkbox" class="platform-toggle" value="Alipay"> Alipay支付寶</label>
+                    <label><input type="checkbox" class="platform-toggle" value="BOC"> BOC中銀</label>
+                    <label><input type="checkbox" class="platform-toggle" value="GFB"> GFB廣發</label>
+                    <label><input type="checkbox" class="platform-toggle" value="ICBC"> ICBC工銀</label>
+                    <label><input type="checkbox" class="platform-toggle" value="Luso"> Luso國際</label>
+                    <label><input type="checkbox" class="platform-toggle" value="MPay"> MPay</label>
+                    <label><input type="checkbox" class="platform-toggle" value="TFB"> TFB大豐</label>
+                    <label><input type="checkbox" class="platform-toggle" value="UePay"> UePay極易付</label>
+                </div>
+            </div>
+            <button class="export-button" onclick="closeSettings()">完成</button>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+
+    <script>
+        // 請替換為您的Firebase配置
+        const firebaseConfig = {
+            apiKey: "AIzaSyCRjL_wJqYvufMvtDiwEuN_vYso4cTKaKA",
+            authDomain: "macau-draw.firebaseapp.com",
+            databaseURL: "https://macau-draw-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "macau-draw",
+            storageBucket: "macau-draw.firebasestorage.app",
+            messagingSenderId: "953987756535",
+            appId: "1:953987756535:web:a7a09862a1ca5aaefbfef2"
+        };
+
+        // 初始化Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.database();
+
+        // 匿名登入狀態監聽
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                console.log("匿名用戶已登入:", user.uid);
+                loadUserRecords(user.uid);
+            } else {
+                auth.signInAnonymously().catch((error) => {
+                    console.error("匿名登入失敗:", error);
+                });
+            }
+        });
+
+        // 保存記錄到Firebase
+        async function saveRecordToFirebase(record) {
+            const user = auth.currentUser;
+            if (!user) return;
+
+            // 數據驗證
+            if (!validateRecord(record)) {
+                alert("無效的記錄數據！");
+                return;
+            }
+
+            const userId = user.uid;
+            const recordId = Date.now();
+            
+            try {
+                await db.ref(`users/${userId}/records/${recordId}`).set({
+                    ...record,
+                    createdAt: firebase.database.ServerValue.TIMESTAMP
+                });
+                console.log("記錄已保存");
+                
+                // Refresh the records after saving
+                loadUserRecords(userId);
+            } catch (error) {
+                console.error("保存失敗:", error);
+                alert("保存失敗，請檢查網絡連接");
+            }
+        }
+
+        // 數據驗證函數
+        function validateRecord(record) {
+            const validPlatforms = ['Alipay', 'BOC', 'GFB', 'ICBC', 'Luso', 'MPay', 'TFB', 'UePay'];
+            const validCoupons = ['10', '20', '50', '100', '200', '-', 'ND'];
+            
+            return (
+                validPlatforms.includes(record.platform) &&
+                validCoupons.includes(record.draw1) &&
+                validCoupons.includes(record.draw2) &&
+                validCoupons.includes(record.draw3) &&
+                typeof record.consumption === 'number'
+            );
+        }
+
+        // 從Firebase加載記錄
+        function loadUserRecords(userId) {
+            const recordsRef = db.ref(`users/${userId}/records`);
+            
+            recordsRef.on('value', (snapshot) => {
+                const records = snapshot.val() || {};
+                renderRecords(records);
+                updateWeeklySummary(records);
+
+                // Set current week filter and apply it
+                const currentWeek = getWeekNumber(new Date());
+                document.getElementById("filterWeek").value = currentWeek;
+                
+                // Apply filter after records are rendered
+                setTimeout(() => {
+                    filterRecords();
+                    updatePlatformOptions(records, currentWeek);
+                }, 100);
+            });
+        }
+
+        // 渲染記錄到表格
+        function renderRecords(records) {
+            const tableBody = document.getElementById('recordsTable').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = '';
+
+            if (Object.keys(records).length === 0) {
+                const emptyRow = tableBody.insertRow();
+                emptyRow.innerHTML = '<td colspan="8" style="text-align:center;">沒有記錄</td>';
+                return;
+            }
+
+            Object.entries(records).forEach(([id, record]) => {
+                const row = tableBody.insertRow();
+                if (record.used) row.classList.add('used');
+                
+                // 檢查是否有需要添加刪除線的券
+                const draw1Strikethrough = record.draw1 === '-' || record.draw1 === 'ND' || (record.strikethrough && record.strikethrough.includes('draw1'));
+                const draw2Strikethrough = record.draw2 === '-' || record.draw2 === 'ND' || (record.strikethrough && record.strikethrough.includes('draw2'));
+                const draw3Strikethrough = record.draw3 === '-' || record.draw3 === 'ND' || (record.strikethrough && record.strikethrough.includes('draw3'));
+                
+                row.innerHTML = `
+                    <td>${record.week}</td>
+                    <td>${record.platform}</td>
+                    <td class="${draw1Strikethrough ? 'strikethrough' : ''}" onclick="toggleStrikethrough('${id}', 'draw1', this)">${record.draw1}</td>
+                    <td class="${draw2Strikethrough ? 'strikethrough' : ''}" onclick="toggleStrikethrough('${id}', 'draw2', this)">${record.draw2}</td>
+                    <td class="${draw3Strikethrough ? 'strikethrough' : ''}" onclick="toggleStrikethrough('${id}', 'draw3', this)">${record.draw3}</td>
+                    <td>${formatNumber(record.consumption)}</td>
+                    <td><input type="checkbox" ${record.used ? 'checked' : ''} onchange="toggleUsed('${id}', this)"></td>
+                    <td><button onclick="deleteRecord('${id}')">刪除</button></td>
+                `;
+            });
+        }
+
+        // 切換刪除線
+        window.toggleStrikethrough = async function(recordId, field, element) {
+            const user = auth.currentUser;
+            if (!user) return;
+
+            try {
+                const recordRef = db.ref(`users/${user.uid}/records/${recordId}`);
+                const snapshot = await recordRef.once('value');
+                const record = snapshot.val();
+                
+                // 初始化strikethrough數組（如果不存在）
+                const strikethrough = record.strikethrough || [];
+                
+                // 檢查當前欄位是否已有刪除線
+                const index = strikethrough.indexOf(field);
+                if (index === -1) {
+                    // 添加刪除線
+                    strikethrough.push(field);
+                    element.classList.add('strikethrough');
+                } else {
+                    // 移除刪除線
+                    strikethrough.splice(index, 1);
+                    element.classList.remove('strikethrough');
+                }
+                
+                // 更新Firebase中的記錄
+                await recordRef.update({ strikethrough });
+                
+                // 檢查是否需要自動勾選"已使用"
+                const currentValue = record[field];
+                const isNumericalCoupon = ['10', '20', '50', '100', '200'].includes(currentValue);
+                
+                if (isNumericalCoupon) {
+                    // 檢查所有數值券是否都有刪除線
+                    const hasDraw1 = ['10', '20', '50', '100', '200'].includes(record.draw1);
+                    const hasDraw2 = ['10', '20', '50', '100', '200'].includes(record.draw2);
+                    const hasDraw3 = ['10', '20', '50', '100', '200'].includes(record.draw3);
+                    
+                    const draw1Strikethrough = !hasDraw1 || strikethrough.includes('draw1');
+                    const draw2Strikethrough = !hasDraw2 || strikethrough.includes('draw2');
+                    const draw3Strikethrough = !hasDraw3 || strikethrough.includes('draw3');
+                    
+                    if (draw1Strikethrough && draw2Strikethrough && draw3Strikethrough) {
+                        await recordRef.update({ used: true });
+                        // 更新UI中的checkbox
+                        const row = element.closest('tr');
+                        if (row) {
+                            const checkbox = row.querySelector('input[type="checkbox"]');
+                            if (checkbox) checkbox.checked = true;
+                            row.classList.add('used');
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error("更新刪除線失敗:", error);
+            }
+        };
+
+        // 刪除記錄
+        window.deleteRecord = async (recordId) => {
+            const user = auth.currentUser;
+            if (!user) return;
+
+            if (confirm('確定要刪除此記錄嗎？')) {
+                try {
+                    await db.ref(`users/${user.uid}/records/${recordId}`).remove();
+                } catch (error) {
+                    console.error("刪除失敗:", error);
+                }
+            }
+        };
+
+        // 切換使用狀態
+        window.toggleUsed = async (recordId, checkbox) => {
+            const user = auth.currentUser;
+            if (!user) return;
+
+            try {
+                await db.ref(`users/${user.uid}/records/${recordId}/used`).set(checkbox.checked);
+                const row = checkbox.closest('tr');
+                if (checkbox.checked) {
+                    row.classList.add('used');
+                } else {
+                    row.classList.remove('used');
+                }
+            } catch (error) {
+                console.error("更新狀態失敗:", error);
+            }
+        };
+
+        // 添加記錄
+        window.addRecord = function() {
+            const platform = document.getElementById("platform").value;
+            let draw1 = document.getElementById("draw1").value;
+            let draw2 = document.getElementById("draw2").value;
+            let draw3 = document.getElementById("draw3").value;
+            const giveUp = document.getElementById("giveUp").checked;
+
+            if (!platform) {
+                alert("請選擇平台！");
+                return;
+            }
+        
+            // 檢查平台是否已被禁用（表示已存在記錄）
+            const platformSelect = document.getElementById("platform");
+            const selectedOption = platformSelect.options[platformSelect.selectedIndex];
+            if (selectedOption.disabled) {
+                alert("本周此平台已存在記錄，請選擇其他平台！");
+                return;
+            }
+
+            if (!giveUp && (draw1 === "" || draw2 === "" || draw3 === "")) {
+                alert("請選擇券1, 券2, 券3！");
+                return;
+            }
+            if (giveUp) {
+                draw1 = draw2 = draw3 = "ND";
+            }
+
+            const weekNumber = getWeekNumber(new Date());
+            const record = {
+                week: weekNumber,
+                platform,
+                draw1,
+                draw2,
+                draw3,
+                consumption: calculateConsumption(draw1, draw2, draw3),
+                used: giveUp
+            };
+
+            saveRecordToFirebase(record);
+            document.getElementById("recordForm").reset();
+            document.getElementById("draw1").value = "-";
+            document.getElementById("draw2").value = "-";
+            document.getElementById("draw3").value = "-";
+        };
+
+        // 計算消費金額
+        function calculateConsumption(draw1, draw2, draw3) {
+            const values = [draw1, draw2, draw3].map(val => {
+                if (val === '-' || val === 'ND') return 0;
+                return parseInt(val) || 0;
+            });
+            const sum = values.reduce((a, b) => a + b, 0);
+            return sum * 3; // 消費金額 = (券1+券2+券3)*3
+        }
+
+        // 更新周摘要
+        function updateWeeklySummary(records) {
+            const currentWeek = getWeekNumber(new Date());
+            let totalCoupons = 0;
+            let totalConsumption = 0;
+
+            Object.values(records).forEach(record => {
+                if (parseInt(record.week) === currentWeek) {
+                    if (record.draw1 !== "ND") totalCoupons += parseInt(record.draw1) || 0;
+                    if (record.draw2 !== "ND") totalCoupons += parseInt(record.draw2) || 0;
+                    if (record.draw3 !== "ND") totalCoupons += parseInt(record.draw3) || 0;
+                    totalConsumption += parseInt(record.consumption) || 0;
+                }
+            });
+
+            document.getElementById('weeklySummary').innerHTML = 
+                `本周消費券：MOP ${formatNumber(totalCoupons)}<br>需消費：MOP ${formatNumber(totalConsumption)}`;
+            document.getElementById('weeklySummary').style.color = 'green';
+        }
+
+        // 格式化數字
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // 獲取當前周數
+        function getWeekNumber(date) {
+            const startOfFirstWeek = new Date(2025, 2, 24); // 2025年3月24日為第一周開始
+            const millisecondsPerWeek = 7 * 24 * 60 * 60 * 1000;
+            const weekNum = Math.floor((date - startOfFirstWeek) / millisecondsPerWeek) + 1;
+            return Math.max(1, Math.min(10, weekNum)); // Ensure week is between 1-10
+        }
+
+        // 篩選記錄
+        window.filterRecords = function() {
+            const week = document.getElementById("filterWeek").value;
+            const platform = document.getElementById("filterPlatform").value;
+            const rows = document.querySelectorAll("#recordsTable tbody tr");
+            const currentWeek = getWeekNumber(new Date());
+
+            let hasVisibleRows = false;
+            
+            rows.forEach(row => {
+                if (row.cells.length === 0) return; // Skip empty rows
+                
+                const weekCell = row.cells[0].innerText;
+                const platformCell = row.cells[1].innerText;
+                const matchWeek = !week || weekCell === week;
+                const matchPlatform = !platform || platformCell === platform;
+                
+                if (matchWeek && matchPlatform) {
+                    row.style.display = "";
+                    hasVisibleRows = true;
+                } else {
+                    row.style.display = "none";
+                }
+            });
+
+            // Update platform options for current week
+            if (week === currentWeek.toString()) {
+                const recordsRef = db.ref(`users/${auth.currentUser.uid}/records`);
+                recordsRef.once('value').then(snapshot => {
+                    const records = snapshot.val() || {};
+                    updatePlatformOptions(records, currentWeek);
+                });
+            } else {
+                // Reset platform options if not viewing current week
+                const platformSelect = document.getElementById("platform");
+                Array.from(platformSelect.options).forEach(option => {
+                    option.disabled = false;
+                    option.style.color = '';
+                });
+            }
+            
+            // Show message if no records found
+            const tableBody = document.querySelector("#recordsTable tbody");
+            if (tableBody && !hasVisibleRows) {
+                const existingMessage = tableBody.querySelector("tr td[colspan='8']");
+                if (!existingMessage) {
+                    const emptyRow = document.createElement('tr');
+                    emptyRow.innerHTML = `<td colspan="8" style="text-align:center;">沒有找到匹配的記錄</td>`;
+                    tableBody.appendChild(emptyRow);
+                }
+            } else if (tableBody && hasVisibleRows) {
+                const existingMessage = tableBody.querySelector("tr td[colspan='8']");
+                if (existingMessage) {
+                    existingMessage.remove();
+                }
+            }
+        };
+
+        // 更新平台選擇狀態
+        function updatePlatformOptions(records, currentWeek) {
+            const platformSelect = document.getElementById("platform");
+            const usedPlatforms = new Set();
+        
+            // 收集已使用的平台
+            Object.values(records).forEach(record => {
+                if (parseInt(record.week) === currentWeek) {
+                    usedPlatforms.add(record.platform);
+                }
+            });
+            
+            // 更新選擇框狀態
+            Array.from(platformSelect.options).forEach(option => {
+                if (option.value && usedPlatforms.has(option.value)) {
+                    option.disabled = true;
+                    option.style.color = '#aaa';
+                } else {
+                    option.disabled = false;
+                    option.style.color = '';
+                }
+            });
+        }
+
+        // 導出CSV
+        window.exportCSV = function() {
+            const table = document.getElementById("recordsTable");
+            const rows = table.querySelectorAll("tr");
+            let csvContent = "\uFEFF"; // BOM頭
+            
+            rows.forEach(row => {
+                const rowData = [];
+                const cells = row.querySelectorAll("th, td");
+                cells.forEach((cell, index) => {
+                    if (index === 6) {
+                        const checkbox = cell.querySelector('input[type="checkbox"]');
+                        rowData.push(checkbox?.checked ? '已使用' : '未使用');
+                    } else if (index !== 7) {
+                        rowData.push(cell.innerText.replace(/,/g, ''));
+                    }
+                });
+                csvContent += rowData.join(",") + "\r\n";
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `macaudraw-${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+
+        // 導入CSV
+        window.importCSV = function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                const contents = e.target.result;
+                const lines = contents.split('\n');
+                const user = auth.currentUser;
+                if (!user) return;
+
+                let importedCount = 0;
+                
+                for (let i = 1; i < lines.length; i++) {
+                    if (lines[i].trim() === '') continue;
+                    
+                    const cells = lines[i].split(',');
+                    if (cells.length >= 7) {
+                        const record = {
+                            week: cells[0],
+                            platform: cells[1],
+                            draw1: cells[2],
+                            draw2: cells[3],
+                            draw3: cells[4],
+                            consumption: parseInt(cells[5].replace(/,/g, '')) || 0,
+                            used: cells[6].includes('已使用')
+                        };
+
+                        if (validateRecord(record)) {
+                            await db.ref(`users/${user.uid}/records/${Date.now() + i}`).set(record);
+                            importedCount++;
+                        }
+                    }
+                }
+                
+                alert(`成功導入 ${importedCount} 條記錄`);
+                event.target.value = '';
+            };
+            reader.readAsText(file);
+        };
+
+        // 初始化時間顯示
+        function updateTimeInfo() {
+            const now = new Date();
+            const weekNumber = getWeekNumber(now);
+            const options = { 
+                year: 'numeric', 
+                month: '2-digit', 
+                day: '2-digit', 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: false
+            };
+            const timeString = now.toLocaleString('zh-HK', options);
+            document.getElementById('timeInfo').innerHTML = 
+                `現在時間是：${timeString}<br>本周是活動第${weekNumber}周`;
+            return weekNumber;
+        }
+
+        // Platform visibility settings
+        function initPlatformSettings() {
+            const hiddenPlatforms = JSON.parse(localStorage.getItem('hiddenPlatforms')) || [];
+            document.querySelectorAll('.platform-toggle').forEach(checkbox => {
+                checkbox.checked = hiddenPlatforms.includes(checkbox.value);
+                checkbox.addEventListener('change', updatePlatformVisibility);
+            });
+            updatePlatformVisibility();
+        }
+
+        function updatePlatformVisibility() {
+            const hiddenPlatforms = [];
+            document.querySelectorAll('.platform-toggle:checked').forEach(checkbox => {
+                hiddenPlatforms.push(checkbox.value);
+            });
+            localStorage.setItem('hiddenPlatforms', JSON.stringify(hiddenPlatforms));
+            
+            // Update platform dropdowns
+            const platformSelects = [
+                document.getElementById('platform'),
+                document.getElementById('filterPlatform')
+            ];
+            
+            platformSelects.forEach(select => {
+                if (!select) return;
+                
+                Array.from(select.options).forEach(option => {
+                    if (option.value && hiddenPlatforms.includes(option.value)) {
+                        option.style.display = 'none';
+                    } else {
+                        option.style.display = '';
+                    }
+                });
+            });
+        }
+
+        // Settings modal functions
+        window.openSettings = function() {
+            document.getElementById('settingsModal').style.display = 'flex';
+        };
+
+        window.closeSettings = function() {
+            document.getElementById('settingsModal').style.display = 'none';
+        };
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('settingsModal')) {
+                closeSettings();
+            }
+        };
+
+        // 初始化頁面
+        updateTimeInfo();
+        setInterval(updateTimeInfo, 60000); // 每分鐘更新時間
+        initPlatformSettings();
+
+        // 隱私設置
+        document.getElementById('analyticsOptOut').addEventListener('change', function(e) {
+            localStorage.setItem('analyticsOptOut', e.target.checked);
+        });
+        document.getElementById('analyticsOptOut').checked = localStorage.getItem('analyticsOptOut') === 'true';
+    </script>
+</body>
+</html>
